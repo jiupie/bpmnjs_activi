@@ -1,24 +1,5 @@
-# vue-bpmn-basic
+bpmnjs 汉化 ，可以导入已有的文件，下载修改的bpmn文件，带有属性面板
 
-## Project setup
-```
-npm install
-```
+[在线地址](http://182.42.111.106:9000/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](./src/assets/img/demo1.png)
