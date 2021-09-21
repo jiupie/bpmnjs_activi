@@ -59,7 +59,7 @@ import activitiModdleDescriptor from '@/assets/activiti.json'
 
 // 导入属性面板
 import propertiesPanelModule from 'bpmn-js-properties-panel'
-
+import { saveAs } from 'file-saver'
 // camunda
 // import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda'
 // import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda'
@@ -68,10 +68,17 @@ export default {
   name: 'Basic',
   components: {},
   // 生命周期 - 创建完成（可以访问当前this实例）
-  created () { },
+  created () {
+
+  },
+
   // 生命周期 - 载入后, Vue 实例挂载到实际的 DOM 操作完成，一般在该过程进行 Ajax 交互
   mounted () {
+    document.addEventListener('keydown', this.save, false)
     this.init()
+  },
+  destroyed () {
+    document.removeEventListener('keydown', this.save, false)
   },
   data () {
     return {
@@ -85,6 +92,33 @@ export default {
     }
   },
   methods: {
+    save (e) {
+      if (e.keyCode === 83 && e.ctrlKey) {
+        // 执行save办法
+        this.saveFile()
+        // 阻止默认事件
+        e.preventDefault()
+      }
+    },
+    saveFile () {
+      this.$confirm('是否保存该文件?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        var blob = new Blob([this.xmlStr], { type: 'text/plain;charset=utf-8' })
+        saveAs(blob, '1.bpmn')
+        this.$message({
+          type: 'success',
+          message: '保存成功!'
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消'
+        })
+      })
+    },
     fileChange (file, fileList) {
       const that = this
       this.file = file.raw

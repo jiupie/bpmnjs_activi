@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
+import element from '@/assets/elementui/index'
 
 import '@/assets/css/global.css'
 
@@ -13,12 +14,8 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 
 import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css' // 右边工具栏样式
 
-import { Button, Select, Upload } from 'element-ui'
-
 Vue.config.productionTip = false
-Vue.use(Button)
-Vue.use(Select)
-Vue.use(Upload)
+Vue.use(element)
 
 new Vue({
   router,
