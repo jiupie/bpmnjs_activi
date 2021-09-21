@@ -88,7 +88,8 @@ export default {
       canvas: null,
       fileList: [],
       file: null,
-      xmlStr: null
+      xmlStr: null,
+      bpmnRaw: null
     }
   },
   methods: {
@@ -106,7 +107,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        var blob = new Blob([this.xmlStr], { type: 'text/plain;charset=utf-8' })
+        var blob = new Blob([this.bpmnRaw], { type: 'text/plain;charset=utf-8' })
         saveAs(blob, '1.bpmn')
         this.$message({
           type: 'success',
@@ -225,10 +226,10 @@ export default {
       // 把xml转换为URI，下载要用到的
       const encodedData = encodeURIComponent(data)
       // 下载图的具体操作,改变a的属性，className令a标签可点击，href令能下载，download是下载的文件的名字
-      console.log(link, name, data)
-      const xmlFile = new File([data], 'test.bpmn')
-      console.log(xmlFile)
+      // const xmlFile = new File([data], 'test.bpmn')
+
       if (data) {
+        this.bpmnRaw = data
         link.className = 'active'
         link.href = 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData
         link.download = name
