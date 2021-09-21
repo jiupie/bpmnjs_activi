@@ -49,13 +49,20 @@
 <script>
 // 引入相关的依赖
 import BpmnModeler from 'bpmn-js/lib/Modeler'
+
+// activiti
+import propertiesProviderModule from '@/components/properties-panel/provider/activiti'
+
 // 导入汉化包
 import customTranslate from '@/components/customTranslate/customTranslate'
+import activitiModdleDescriptor from '@/assets/activiti.json'
 
 // 导入属性面板
 import propertiesPanelModule from 'bpmn-js-properties-panel'
-import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda'
-import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda'
+
+// camunda
+// import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda'
+// import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda'
 
 export default {
   name: 'Basic',
@@ -110,7 +117,10 @@ export default {
           customTranslateModule
         ],
         moddleExtensions: {
-          camunda: camundaModdleDescriptor
+          // camunda的
+          // camunda: camundaModdleDescriptor,
+          // activiti
+          activiti: activitiModdleDescriptor
         }
       })
       this.createNewDiagram()
@@ -228,7 +238,8 @@ export default {
   border: 1px solid #ccc;
   text-decoration: none;
 }
-.buttons li a.active,.buttons .upload {
+.buttons li a.active,
+.buttons .upload {
   color: #333;
   background: #fff;
   cursor: pointer;
