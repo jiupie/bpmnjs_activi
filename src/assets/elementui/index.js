@@ -42,7 +42,8 @@ import {
   MenuItem,
   Submenu,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  Scrollbar
 
 } from 'element-ui'
 const element = {
@@ -88,6 +89,7 @@ const element = {
     Vue.use(Submenu)
     Vue.use(RadioGroup)
     Vue.use(RadioButton)
+    Vue.use(Scrollbar)
 
     Vue.prototype.$message = Message
     Vue.prototype.$confirm = MessageBox.confirm

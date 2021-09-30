@@ -4,10 +4,10 @@
       class="canvas"
       ref="canvas"
     ></div>
-    <div
-      id="js-properties-panel"
-      class="panel"
-    ></div>
+       <div
+        id="js-properties-panel"
+        class="panel"
+      ></div>
     <ul class="buttons">
       <li>
         <a
@@ -254,7 +254,11 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
-  width: 300px;
+  width: 25%;
+  height: 100%;
+  overflow: scroll;
+  z-index: 10;
+  overflow-x: auto;
 }
 .buttons {
   position: absolute;
@@ -279,4 +283,5 @@ export default {
   background: #fff;
   cursor: pointer;
 }
+
 </style>
